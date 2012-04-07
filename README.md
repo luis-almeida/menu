@@ -6,7 +6,7 @@ I really think we don't use the CSS counter functions enough.
 They don't even use it in the [CSS spec](http://www.w3.org/TR/CSS21/generate.html) to add automatic numbering to the list of links!
 
 We can even use this CSS property to automatically count our sub menu items. 
-This is really helpful because the count will automatically be updated in case we add more items dynamically (Ajax for instance).
+This is really helpful because the count will automatically be updated in case we add more items dynamically (Ajax calls).
 
 The markup is basic, no need to use spans or any other elements for the numbers:
 
@@ -21,7 +21,8 @@ The markup is basic, no need to use spans or any other elements for the numbers:
 		&lt;/ul>
 	&lt;/li>
 	...
-&lt;/ul></pre>
+&lt;/ul></pre>  
+
 
 And then in the CSS you just have to:
 
@@ -31,11 +32,12 @@ ul > li > ul { counter-reset: items; }
 /* increment the counter */
 ul > li > ul > li { counter-increment: items; }
 
-/* Display the total amount of items using the "after" pseudo-element" */
+/* Display the total number of items in the "after" pseudo-element" */
 ul > li > ul:after { content: counter(items); }</pre>  
   
   
   
-This technique is compatible with all modern browsers and I8+.  
+  
+This technique is compatible with all modern browsers and IE8+.  
 
 See how it looks [here](http://luis-almeida.github.com/menu/).
