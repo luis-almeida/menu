@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+    <head>
+		<title>Automatic sub menu counters with CSS</title>
+
+		<style>
+            html {
+                overflow-y: scroll; 
+            }
+			body {
+				font: normal normal 90% sans-serif;
+				max-width: 200px;
+				margin: 100px auto 50px auto;
+				background: #5d5d5d;
+                text-align: center;
+			}
+
+			ul {
+				list-style: none;
+				margin: 0; padding: 0;
+                text-align: left;
+			}
+			body > ul {
+				border: 1px solid #222;
+				box-shadow: 0 0 3px #333;
+				box-shadow: 0 0 3px rgba(0,0,0,0.7);
+				margin-bottom: 300px;
+			}
+			body > ul > li {
+				position: relative;
+			}
+			body > ul > li > a {
+				display: block;
+				outline: 0;
+				padding: .7em 1em;
+				text-decoration: none;
+				color: #FFF;
+				text-shadow: #111 0 -1px;
+				font-weight: bold;
+				background: #333;
+				background: -webkit-linear-gradient(#444, #333);
+				border-bottom: 1px solid #222;
+				box-shadow: inset 0 1px 0 0 rgba(250,250,250,0.1);
+                background: -webkit-linear-gradient(#444, #333);
+                background:    -moz-linear-gradient(#444, #333);
+                background:      -o-linear-gradient(#444, #333);
+                background:     -ms-linear-gradient(#444, #333);
+                background:         linear-gradient(#444, #333);
+                filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr="#444", EndColorStr="#333");
+			}
+			body > ul > li > ul {
+				counter-reset: items;
+				height: 0;
+				overflow: hidden;
+				background: #eee;
+				color: #777;
+				font-size: .75em;
+				box-shadow: inset 0 0 30px #ccc;
+				box-shadow: inset 0 0px 30px rgba(204, 204, 153, .5);
+			}
+			body > ul > li > ul > li {
+				counter-increment: items;
+				padding: .5em 1.3em;
+				border-bottom: 1px dotted #DDD;
+			}
+			body > ul > li > ul:after {
+				content: counter(items);
+				font-size: 0.857em;
+				display: inline-block;
+				position: absolute;
+				right: 10px;
+				top: 15px;
+				background: #333;
+				line-height: 1em;
+				height: 1em;
+				padding: .7em .8em;
+				margin: -.8em 0 0 0;
+				color: white;
+				text-indent: 0;
+				text-align: center;
+				text-shadow: 0px 1px 0px rgba(0, 0, 0, .5);
+				font-weight: 500;
+				-webkit-border-radius: .769em;
+				   -moz-border-radius: .769em;
+						border-radius: .769em;
+				-webkit-box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, .26), 
+									0px 1px 0px 0px rgba(255, 255, 255, .15);
+				   -moz-box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, .26), 
+									0px 1px 0px 0px rgba(255, 255, 255, .15);
+						box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, .26), 
+									0px 1px 0px 0px rgba(255, 255, 255, .15);
+			}
+
+		</style>
+
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+		<script>
+		$(function() {
+
+			$("a").click(function() {
+				var ul = $(this).next(),
+					clone = ul.clone().css({"height":"auto"}).appendTo("body"),
+					height = ul.css("height") === "0px" ? ul[0].scrollHeight + "px" : "0px";
+				
+				clone.remove();
+				ul.animate({"height":height}, "fast");
+			});
+			
+		});
+		</script>
+	</head>
+	<body>
+
+		<ul>
+			<li>
+				<a href="#">Movies</a>
+				<ul>
+					<li>The Departed</li>
+					<li>Sherlock Holmes</li>
+					<li>Sin City</li>
+					<li>Jarhead</li>
+					<li>Jurassic Park</li>
+					<li>Machete</li>
+				</ul>
+			</li>
+			<li>
+				<a href="#">TV shows</a>
+				<ul>
+					<li>Dexter</li>
+					<li>Mad Men</li>
+					<li>Fringe</li>
+					<li>Game of Thrones</li>
+					<li>Californication</li>
+					<li>Homeland</li>
+					<li>Boardwalk Empire</li>
+				</ul>
+			</li>
+			<li>
+				<a href="#">Music</a>
+				<ul>
+					<li>B.B. King</li>
+					<li>Howlin' Wolf</li>
+					<li>Aretha Franklin</li>
+					<li>John Lee Hooker</li>
+					<li>Tom Waits</li>
+					<li>Jimi Hendrix</li>
+					<li>Muddy Waters</li>
+					<li>James Brown</li>
+				</ul>
+			</li>
+			<li>
+				<a href="#">Games</a>
+				<ul>
+					<li>Grand Theft Auto</li>
+					<li>Half-Life</li>
+					<li>Super Mario Galaxy</li>
+					<li>Resident Evil</li>
+				</ul>
+			</li>
+		</ul>
+        
+        <a href="https://twitter.com/share" class="twitter-share-button" data-text="Automatic sub menu counters with CSS" data-via="lmgalmeida" data-related="lmgalmeida" data-count="none">Tweet</a>
+    	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+        
+        <a href="http://github.com/luis-almeida"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://a248.e.akamai.net/assets.github.com/img/5d21241b64dc708fcbb701f68f72f41e9f1fadd6/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f7265645f6161303030302e706e67" alt="Fork me on GitHub"></a>
+        
+        <script type="text/javascript">
+        
+          var _gaq = _gaq || [];
+          _gaq.push(['_setAccount', 'UA-30673793-1']);
+          _gaq.push(['_trackPageview']);
+        
+          (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+          })();
+        
+        </script>
+
+	</body>
+</html>
