@@ -25,11 +25,15 @@ The markup is basic, no need to use spans or any other elements for the numbers:
 
 And then in the CSS you just have to:
 
-/* reset the counter for every sub menu */
+<pre>/* reset the counter for every sub menu */
 ul > li > ul { counter-reset: items; }
 
 /* increment the counter */
 ul > li > ul > li { counter-increment: items; }
 
 /* Display the total amount of items using the "after" pseudo-element" */
-ul > li > ul:after { content: counter(items); }
+ul > li > ul:after { content: counter(items); }</pre>
+
+
+
+
