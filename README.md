@@ -38,4 +38,4 @@ ul > li > ul:after { content: counter(items); }</pre>
   
 This technique is compatible with all modern browsers and I8+.  
 
-See how it looks [here](http://luis-almeida.github.com/filtrify/).
+See how it looks [here](http://luis-almeida.github.com/menu/).
